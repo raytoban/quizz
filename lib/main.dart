@@ -76,6 +76,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextStyle(color: Colors.white, fontSize: 20.0))),
                 ),
               ),
+              Row(
+                children: [
+                  Icon(Icons.check, color: Colors.green),
+                  Icon(Icons.close, color: Colors.red),
+                  Icon(Icons.close, color: Colors.red),
+                  Icon(Icons.check, color: Colors.green),
+                  Icon(Icons.check, color: Colors.green),
+                ],
+              )
             ],
           ),
         ),
