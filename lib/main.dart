@@ -14,13 +14,23 @@ class QuizzApp extends StatefulWidget {
 }
 
 class _QuizzAppState extends State<QuizzApp> {
+  List<bool> reponses = [
+    true,
+    true,
+    false,
+    true,
+    false,
+  ];
   int questionNumber = 0;
   List<String> listQuestions = [
-    "voici la première question",
-    "La deuxième question",
-    "3ième question"
+    "La terre est ronde?",
+    "une minute est égale à soixante seconde?",
+    "FaceBook a conçu Flutter?",
+    "la mer est bleue?",
+    "un booleen peut avoir trois valeurs?",
   ];
   List<Icon> listIcons = [];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,10 +60,16 @@ class _QuizzAppState extends State<QuizzApp> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.green)),
                       onPressed: () {
-                        setState(() {
-                          listIcons.add(Icon(Icons.check, color: Colors.green));
-                          questionNumber = questionNumber + 1;
-                        });
+                        if (reponses[questionNumber] == true)
+                          setState(() {
+                            listIcons
+                                .add(Icon(Icons.check, color: Colors.green));
+                          });
+                        else
+                          setState(() {
+                            listIcons.add(Icon(Icons.close, color: Colors.red));
+                          });
+                        questionNumber = questionNumber + 1;
                       },
                       child: const Text("Vrai",
                           style:
@@ -68,10 +84,16 @@ class _QuizzAppState extends State<QuizzApp> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.red)),
                       onPressed: () {
-                        setState(() {
-                          listIcons.add(Icon(Icons.close, color: Colors.red));
-                          questionNumber = questionNumber + 1;
-                        });
+                        if (reponses[questionNumber] == false)
+                          setState(() {
+                            listIcons
+                                .add(Icon(Icons.check, color: Colors.green));
+                          });
+                        else
+                          setState(() {
+                            listIcons.add(Icon(Icons.close, color: Colors.red));
+                          });
+                        questionNumber = questionNumber + 1;
                       },
                       child: const Text("Faux",
                           style:
