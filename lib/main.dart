@@ -14,13 +14,11 @@ class QuizzApp extends StatefulWidget {
 }
 
 class _QuizzAppState extends State<QuizzApp> {
-  List<Icon> listIcons = [
-    Icon(Icons.check, color: Colors.green),
-    Icon(Icons.close, color: Colors.red),
-    Icon(Icons.close, color: Colors.red),
-    Icon(Icons.check, color: Colors.green),
-    Icon(Icons.check, color: Colors.green),
+  List<String> listQuestions = [
+    "voici la première question",
+    "La deuxième question"
   ];
+  List<Icon> listIcons = [];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,7 +34,7 @@ class _QuizzAppState extends State<QuizzApp> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Center(
                     child: Text(
-                      "Voici le texte de la question",
+                      listQuestions[1],
                       style: TextStyle(color: Colors.white, fontSize: 25.0),
                     ),
                   ),
@@ -49,7 +47,11 @@ class _QuizzAppState extends State<QuizzApp> {
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.green)),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          listIcons.add(Icon(Icons.check, color: Colors.green));
+                        });
+                      },
                       child: const Text("Vrai",
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0))),
@@ -62,7 +64,11 @@ class _QuizzAppState extends State<QuizzApp> {
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.red)),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          listIcons.add(Icon(Icons.close, color: Colors.red));
+                        });
+                      },
                       child: const Text("Faux",
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0))),
