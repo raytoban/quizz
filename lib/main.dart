@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const QuizzApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class QuizzApp extends StatefulWidget {
+  const QuizzApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  _QuizzAppState createState() => _QuizzAppState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _QuizzAppState extends State<QuizzApp> {
+  List<Icon> listIcons = [
+    Icon(Icons.check, color: Colors.green),
+    Icon(Icons.close, color: Colors.red),
+    Icon(Icons.close, color: Colors.red),
+    Icon(Icons.check, color: Colors.green),
+    Icon(Icons.check, color: Colors.green),
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -76,15 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextStyle(color: Colors.white, fontSize: 20.0))),
                 ),
               ),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  Icon(Icons.close, color: Colors.red),
-                  Icon(Icons.close, color: Colors.red),
-                  Icon(Icons.check, color: Colors.green),
-                  Icon(Icons.check, color: Colors.green),
-                ],
-              )
+              Row(children: listIcons),
             ],
           ),
         ),
