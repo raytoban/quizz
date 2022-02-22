@@ -14,9 +14,11 @@ class QuizzApp extends StatefulWidget {
 }
 
 class _QuizzAppState extends State<QuizzApp> {
+  int questionNumber = 0;
   List<String> listQuestions = [
     "voici la première question",
-    "La deuxième question"
+    "La deuxième question",
+    "3ième question"
   ];
   List<Icon> listIcons = [];
   @override
@@ -34,7 +36,7 @@ class _QuizzAppState extends State<QuizzApp> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Center(
                     child: Text(
-                      listQuestions[1],
+                      listQuestions[questionNumber],
                       style: TextStyle(color: Colors.white, fontSize: 25.0),
                     ),
                   ),
@@ -50,6 +52,7 @@ class _QuizzAppState extends State<QuizzApp> {
                       onPressed: () {
                         setState(() {
                           listIcons.add(Icon(Icons.check, color: Colors.green));
+                          questionNumber = questionNumber + 1;
                         });
                       },
                       child: const Text("Vrai",
@@ -67,6 +70,7 @@ class _QuizzAppState extends State<QuizzApp> {
                       onPressed: () {
                         setState(() {
                           listIcons.add(Icon(Icons.close, color: Colors.red));
+                          questionNumber = questionNumber + 1;
                         });
                       },
                       child: const Text("Faux",
