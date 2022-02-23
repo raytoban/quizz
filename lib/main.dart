@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -60,16 +62,19 @@ class _QuizzAppState extends State<QuizzApp> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.green)),
                       onPressed: () {
-                        if (reponses[questionNumber] == true)
-                          setState(() {
+                        setState(() {
+                          if (reponses[questionNumber] == true) {
                             listIcons
                                 .add(Icon(Icons.check, color: Colors.green));
-                          });
-                        else
-                          setState(() {
+                          } else {
                             listIcons.add(Icon(Icons.close, color: Colors.red));
-                          });
-                        questionNumber = questionNumber + 1;
+                          }
+                          if (questionNumber < 4) {
+                            questionNumber++;
+                          } else {
+                            questionNumber = 0;
+                          }
+                        });
                       },
                       child: const Text("Vrai",
                           style:
@@ -84,16 +89,19 @@ class _QuizzAppState extends State<QuizzApp> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.red)),
                       onPressed: () {
-                        if (reponses[questionNumber] == false)
-                          setState(() {
+                        setState(() {
+                          if (reponses[questionNumber] == false) {
                             listIcons
                                 .add(Icon(Icons.check, color: Colors.green));
-                          });
-                        else
-                          setState(() {
+                          } else {
                             listIcons.add(Icon(Icons.close, color: Colors.red));
-                          });
-                        questionNumber = questionNumber + 1;
+                          }
+                          if (questionNumber < 4) {
+                            questionNumber++;
+                          } else {
+                            questionNumber = 0;
+                          }
+                        });
                       },
                       child: const Text("Faux",
                           style:
